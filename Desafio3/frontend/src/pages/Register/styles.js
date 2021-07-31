@@ -12,6 +12,16 @@ const useStyles = makeStyles((theme) => ({
     margin: `160px auto`,
     padding: 75,
     textAlign: 'center',
+    borderRadius: 16,
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    flexGrow: 1,
+    '& > *': {
+      margin: 20,
+    },
   },
 }));
 

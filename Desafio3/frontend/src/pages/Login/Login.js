@@ -1,105 +1,71 @@
-import {
-  Button,
-  Container,
-  FormControl,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
-  Paper,
-  TextField,
-  Typography,
-} from '@material-ui/core';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
+import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { PasswordField } from '../../components';
 import useStyles from './styles';
 
-export default function Login() {
+export default function Register() {
   const classes = useStyles();
-  const [values, setValues] = useState({
-    login: '',
-    password: '',
-    showPassword: false,
-  });
-
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
-
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
+  const myRef = useRef(null);
 
   function handleLogin(data) {
     console.log(data);
+    console.log(myRef);
+    reset();
   }
-  console.log(errors);
+
   return (
-    <Container maxWidth='sm'>
-      <Paper className={classes.container} elevation={12}>
-        <Typography variant='h4' align='center'>
-          Login
-        </Typography>
-        <form className={classes.form} onSubmit={handleSubmit(handleLogin)}>
-          <FormControl>
-            <TextField
-              label='E-mail'
-              fullWidth
-              autoFocus
-              type='email'
-              {...register('email', {
-                required: 'E-mail obrigatório',
-                pattern: {
-                  value:
-                    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
-                  message: 'E-mail inválido',
-                },
-              })}
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor='standard-adornment-password'>Senha</InputLabel>
-            <Input
-              id='standard-adornment-password'
-              type={values.showPassword ? 'text' : 'password'}
-              {...register('password', { required: 'Senha obrigatório' })}
-              fullWidth
-              endAdornment={
-                <InputAdornment position='end'>
-                  <IconButton
-                    aria-label='toggle password visibility'
-                    onClick={handleClickShowPassword}
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-          <div>
-            {errors.email?.message && (
-              <Alert severity='error'>{errors.email?.message}</Alert>
-            )}
+    <div className={classes.root}>
+      <Paper className={classes.paper} elevation={10}>
+        <Grid container spacing={2}>
+          <Grid item xs>
+            <Typography variant='h4' gutterBottom={true}>
+              Login
+            </Typography>
+            <form className={classes.form} onSubmit={handleSubmit(handleLogin)}>
+              <TextField
+                label='E-mail'
+                fullWidth
+                autoFocus
+                type='email'
+                {...register('email', {
+                  required: 'E-mail obrigatório',
+                  pattern: {
+                    value:
+                      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
+                    message: 'E-mail inválido',
+                  },
+                })}
+              />
 
-            {errors.password?.message && (
-              <Alert severity='error'>{errors.password?.message}</Alert>
-            )}
+              <PasswordField inputlabel={'Senha'} {...register('password')} />
+              {/* TODO returns undefined */}
 
-            <Button type='submit' color='primary' variant='contained'>
-              Entrar
-            </Button>
-          </div>
-        </form>
-        <Typography variant='caption'>
-          Primeira vez aqui?
-          {/* <a href='#'>CRIE UMA CONTA</a>{' '} */}
-        </Typography>{' '}
+              {errors.email?.message && (
+                <Alert severity='error'>{errors.email?.message}</Alert>
+              )}
+
+              {errors.password?.message && (
+                <Alert severity='error'>{errors.password?.message}</Alert>
+              )}
+              <Button type='submit' color='primary' variant='contained'>
+                CRIAR CONTA
+              </Button>
+              <Typography variant='caption' display='block'>
+                Primeira vez aqui? CRIE UMA CONTA
+              </Typography>
+            </form>
+          </Grid>
+        </Grid>
       </Paper>
-    </Container>
+    </div>
   );
 }

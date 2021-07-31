@@ -1,32 +1,27 @@
-import { makeStyles } from '@material-ui/core/styles';
+const { makeStyles } = require('@material-ui/core');
 
-/* eslint-disable no-unused-vars */
 const useStyles = makeStyles((theme) => ({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    height: 560,
-    width: 390,
-    margin: 'auto',
-    marginTop: 160,
-    padding: 80,
+  root: {
+    flexGrow: 1,
+    overflow: 'hidden',
+    padding: theme.spacing(0, 3),
+  },
+  paper: {
+    maxWidth: 400,
+    maxHeight: 850,
+    margin: `160px auto`,
+    padding: 75,
+    textAlign: 'center',
     borderRadius: 16,
   },
   form: {
-    flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-evenly',
     alignItems: 'center',
-  },
-  withoutLabel: {
-    marginTop: theme.spacing(3),
-  },
-
-  alert: {
-    fontWeight: 500,
-    width: 220,
+    flexGrow: 1,
+    '& > *': {
+      margin: 20,
+    },
   },
 }));
 
