@@ -8,7 +8,7 @@ import StorefrontIcon from '@material-ui/icons/Storefront';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import { Store } from '../../pages';
+import { AddProducts, Store } from '../../pages';
 import useStyles from '../LoggedBar/styles';
 
 function TabPanel(props) {
@@ -74,7 +74,7 @@ export default function VerticalTabs() {
         <Store />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <AddProducts />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
