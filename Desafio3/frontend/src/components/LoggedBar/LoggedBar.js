@@ -6,8 +6,9 @@ import { Home } from '@material-ui/icons';
 import CancelIcon from '@material-ui/icons/Cancel';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 
+import { Store } from '../../pages';
 import useStyles from '../LoggedBar/styles';
 
 function TabPanel(props) {
@@ -45,7 +46,7 @@ function a11yProps(index) {
 
 export default function VerticalTabs() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -58,19 +59,19 @@ export default function VerticalTabs() {
         variant='scrollable'
         value={value}
         onChange={handleChange}
-        aria-label='Vertical tabs example'
+        aria-label='Opcoes do menu'
         className={classes.tabs}
       >
-        <Tab label='Item Two' icon={<StorefrontIcon />} {...a11yProps(1)} />
-        <Tab label='Item Two' icon={<Home />} {...a11yProps(0)} />
-        <Tab label='Item Three' icon={<CancelIcon />} {...a11yProps(2)} />
-        <Tab label='Item Four' {...a11yProps(3)} />
-        <Tab label='Item Five' {...a11yProps(4)} />
-        <Tab label='Item Six' {...a11yProps(5)} />
-        <Tab label='Item Seven' {...a11yProps(6)} />
+        <Tab
+          icon={<StorefrontIcon fontSize='large' />}
+          {...a11yProps(0)}
+          className={classes.tab}
+        />
+        <Tab icon={<Home fontSize='large' />} {...a11yProps(1)} />
+        <Tab icon={<CancelIcon fontSize='large' />} {...a11yProps(2)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        Item One
+        <Store />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
