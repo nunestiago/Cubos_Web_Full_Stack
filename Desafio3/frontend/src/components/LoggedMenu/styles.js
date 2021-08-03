@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
-    height: '100vh',
+    minHeight: '100vh',
   },
 
   tabs: {
@@ -17,7 +17,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 110,
     color: theme.palette.text.secondary,
   },
-  button: {},
+  tab: {
+    marginBottom: 24,
+  },
 }));
 
 export default useStyles;

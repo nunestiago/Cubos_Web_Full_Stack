@@ -8,10 +8,10 @@ function Store() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography variant='h3' gutterBottom={true}>
+      <Typography variant='h3' className={classes.title}>
         Nome da loja
       </Typography>
-      <Typography variant='h4' gutterBottom={true}>
+      <Typography variant='h4' className={classes.subtitle}>
         Seus produtos
       </Typography>
       <CustomCard />

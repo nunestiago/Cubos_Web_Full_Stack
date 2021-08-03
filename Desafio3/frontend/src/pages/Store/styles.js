@@ -5,8 +5,15 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 60,
     marginTop: 78,
   },
+  title: {
+    marginBottom: 86,
+  },
+  subtitle: {
+    marginBottom: 57,
+  },
   divider: {
     margin: '1rem 0',
+    width: '100%',
   },
 }));
 

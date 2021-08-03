@@ -32,7 +32,7 @@ export default function Register() {
               onSubmit={handleSubmit(handleRegistration)}
             >
               <TextField
-                id='standard-basic'
+                id='username'
                 label='Seu nome'
                 type='text'
                 {...register('userName', {
@@ -40,7 +40,7 @@ export default function Register() {
                 })}
               />
               <TextField
-                id='standard-basic'
+                id='storename'
                 label='Nome da loja'
                 type='text'
                 {...register('storeName', {
@@ -48,7 +48,7 @@ export default function Register() {
                 })}
               />
               <TextField
-                id='standard-basic'
+                id='email'
                 label='E-mail'
                 type='email'
                 {...register('email', {

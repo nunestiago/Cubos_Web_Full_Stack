@@ -2,14 +2,14 @@ import Box from '@material-ui/core/Box';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
-import { Home } from '@material-ui/icons';
 import CancelIcon from '@material-ui/icons/Cancel';
+import PersonIcon from '@material-ui/icons/Person';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
 import { AddProducts, Store } from '../../pages';
-import useStyles from '../LoggedBar/styles';
+import useStyles from './styles';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,7 +44,7 @@ function a11yProps(index) {
   };
 }
 
-export default function VerticalTabs() {
+export default function LoggedMenu() {
   const classes = useStyles();
   const [value, setValue] = useState(0);
 
@@ -67,8 +67,14 @@ export default function VerticalTabs() {
           {...a11yProps(0)}
           className={classes.tab}
         />
-        <Tab icon={<Home fontSize='large' />} {...a11yProps(1)} />
-        <Tab icon={<CancelIcon fontSize='large' />} {...a11yProps(2)} />
+        <Tab
+          icon={<PersonIcon fontSize='large' className={classes.tab} />}
+          {...a11yProps(1)}
+        />
+        <Tab
+          icon={<CancelIcon fontSize='large' className={classes.tab} />}
+          {...a11yProps(2)}
+        />
       </Tabs>
       <TabPanel value={value} index={0}>
         <Store />
@@ -77,7 +83,7 @@ export default function VerticalTabs() {
         <AddProducts />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        Item three
       </TabPanel>
       <TabPanel value={value} index={3}>
         Item Four

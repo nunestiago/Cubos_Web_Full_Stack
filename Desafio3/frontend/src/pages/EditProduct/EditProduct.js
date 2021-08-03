@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import useStyles from './styles';
 
-function AddProducts() {
+function EditProduct() {
   const classes = useStyles();
 
   const {
@@ -96,4 +96,4 @@ function AddProducts() {
   );
 }
 
-export default AddProducts;
+export default EditProduct;
