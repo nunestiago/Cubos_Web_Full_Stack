@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  toFlex: { display: 'flex' },
   title: {
     marginBottom: 86,
   },
@@ -23,6 +24,13 @@ const useStyles = makeStyles((theme) => ({
   },
   divider: {
     margin: '1rem 0',
+  },
+  image: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: theme.spacing(10),
+    borderRadius: '16px',
   },
   footer: {
     marginTop: 'auto',

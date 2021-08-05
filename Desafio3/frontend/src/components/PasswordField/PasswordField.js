@@ -6,19 +6,16 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import clsx from 'clsx';
-import React, { forwardRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import useStyles from './styles';
 
-const PasswordField = forwardRef((props, ref) => {
+const PasswordField = (props, ref) => {
   const classes = useStyles();
-  const [values, setValues] = useState({
-    showPassword: false,
-  });
-  // TODO when const showPassword false directly TOO MANY RERENDERS
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
+    setShowPassword(!showPassword);
   };
 
   const handleMouseDownPassword = (event) => {
@@ -26,14 +23,18 @@ const PasswordField = forwardRef((props, ref) => {
   };
 
   return (
-    <FormControl className={clsx(classes.margin, classes.textField)}>
+    <FormControl
+      className={clsx(classes.margin, classes.textField)}
+      error={props.error}
+    >
       <InputLabel htmlFor={props.label}>{props.label}</InputLabel>
       <Input
         id={props.label}
-        type={values.showPassword ? 'text' : 'password'}
-        ref={ref}
+        type={showPassword ? 'text' : 'password'}
         name={props.name}
+        label={props.label}
         onChange={props.onChange}
+        {...props.register()}
         endAdornment={
           <InputAdornment position='end'>
             <IconButton
@@ -41,13 +42,13 @@ const PasswordField = forwardRef((props, ref) => {
               onClick={handleClickShowPassword}
               onMouseDown={handleMouseDownPassword}
             >
-              {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              {showPassword ? <Visibility /> : <VisibilityOff />}
             </IconButton>
           </InputAdornment>
         }
       />
     </FormControl>
   );
-});
+};
 
 export default PasswordField;

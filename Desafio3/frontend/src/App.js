@@ -1,15 +1,18 @@
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import React from 'react';
 
-import { LoggedMenu } from './components';
 import theme from './config/theme';
+import { Home } from './pages';
+import Routes from './routes/Routes';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <LoggedMenu />
-    </ThemeProvider>
+    <Routes>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Home />
+      </ThemeProvider>
+    </Routes>
   );
 }
 

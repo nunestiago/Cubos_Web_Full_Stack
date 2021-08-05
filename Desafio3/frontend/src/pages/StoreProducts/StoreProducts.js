@@ -4,7 +4,7 @@ import React from 'react';
 import CustomCard from '../../components/CustomCard/CustomCard';
 import useStyles from './styles';
 
-function Store() {
+function StoreProducts() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -23,4 +23,4 @@ function Store() {
   );
 }
 
-export default Store;
+export default StoreProducts;

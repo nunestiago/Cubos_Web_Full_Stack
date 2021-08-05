@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,8 +18,10 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   tab: {
-    marginBottom: 24,
+    boxSizing: 'content-box',
   },
+  svgIcon: { padding: 20 },
+  '&:active': { color: 'red' },
 }));
 
 export default useStyles;

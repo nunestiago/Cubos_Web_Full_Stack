@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { PasswordField } from '../../components';
+import { emailRegex } from '../../utils/emailRegex';
 import useStyles from './styles';
 
 export default function Register() {
@@ -11,7 +12,7 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    reset,
+    setError,
     formState: { errors },
   } = useForm();
   const myRef = useRef(null);
@@ -19,7 +20,6 @@ export default function Register() {
   function handleLogin(data) {
     console.log(data);
     console.log(myRef);
-    reset();
   }
 
   return (
@@ -39,15 +39,18 @@ export default function Register() {
                 {...register('email', {
                   required: 'E-mail obrigatório',
                   pattern: {
-                    value:
-                      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
+                    value: emailRegex,
                     message: 'E-mail inválido',
                   },
                 })}
               />
 
-              <PasswordField inputlabel={'Senha'} {...register('password')} />
-              {/* TODO returns undefined */}
+              <PasswordField
+                label={'Senha'}
+                register={() =>
+                  register('password', { required: 'Senha obrigatório' })
+                }
+              />
 
               {errors.email?.message && (
                 <Alert severity='error'>{errors.email?.message}</Alert>
