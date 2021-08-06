@@ -16,7 +16,7 @@ function Home() {
           color='primary'
           aria-label='contained primary button group'
         >
-          <Button onClick={() => history.push('/')}>Lojas</Button>
+          <Button onClick={() => history.push('/store')}>Lojas</Button>
           <Button onClick={() => history.push('/login')}>Login</Button>
           <Button onClick={() => history.push('/register')}>Registrar</Button>
         </ButtonGroup>

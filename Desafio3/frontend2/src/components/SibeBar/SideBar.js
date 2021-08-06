@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   svgIcon: { boxSizing: 'content-box', fontSize: 32, padding: 10 },
 }));
 
-export default function IconTabs() {
+export default function IconTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -40,30 +40,33 @@ export default function IconTabs() {
   };
 
   return (
-    <div className={classes.root}>
-      <Tabs
-        orientation='vertical'
-        value={value}
-        onChange={handleChange}
-        variant='scrollable'
-        centered={true}
-        className={classes.tabs}
-        aria-label='icon tabs example'
-        classes={{ indicator: classes.indicator }}
-      >
-        <Tab
-          icon={<StorefrontIcon className={classes.svgIcon} />}
-          aria-label='phone'
-        />
-        <Tab
-          icon={<PersonIcon className={classes.svgIcon} />}
-          aria-label='favorite'
-        />
-        <Tab
-          icon={<CancelIcon className={classes.svgIcon} />}
-          aria-label='person'
-        />
-      </Tabs>
+    <div style={{ display: 'flex' }}>
+      <div className={classes.root}>
+        <Tabs
+          orientation='vertical'
+          value={value}
+          onChange={handleChange}
+          variant='scrollable'
+          centered={true}
+          className={classes.tabs}
+          aria-label='icon tabs example'
+          classes={{ indicator: classes.indicator }}
+        >
+          <Tab
+            icon={<StorefrontIcon className={classes.svgIcon} />}
+            aria-label='phone'
+          />
+          <Tab
+            icon={<PersonIcon className={classes.svgIcon} />}
+            aria-label='favorite'
+          />
+          <Tab
+            icon={<CancelIcon className={classes.svgIcon} />}
+            aria-label='person'
+          />
+        </Tabs>
+      </div>
+      {props.children}
     </div>
   );
 }

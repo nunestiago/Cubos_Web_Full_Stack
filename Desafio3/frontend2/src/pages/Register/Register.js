@@ -11,6 +11,7 @@ import useStyles from './styles';
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
   const [apiError, setApiError] = useState('');
   const history = useHistory();
   const classes = useStyles();
@@ -22,18 +23,16 @@ export default function Register() {
     formState: { errors },
   } = useForm();
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   async function handleRegistration(data) {
     setLoading(true);
-    setLoading(false);
-
-    if (data.password !== data.passwordConfirmation) {
-      setError('password', { type: 'validate' }, { shouldFocus: true });
-      setError(
-        'passwordConfirmation',
-        { type: 'validate' },
-        { shouldFocus: true }
-      );
-    }
 
     try {
       const response = await fetch('http://localhost:3001/register', {
@@ -107,7 +106,7 @@ export default function Register() {
                 label='Senha'
                 register={() =>
                   register('password', {
-                    required: "Campo 'E-mail' obrigatório ",
+                    required: "Campo 'Senha' obrigatório ",
                   })
                 }
                 error={!!errors.password}
@@ -127,7 +126,9 @@ export default function Register() {
                   })
                 }
               />
+
               <CustomAlert errors={errors} />
+
               {apiError && (
                 <Alert severity='error' className={classes.alert}>
                   {apiError}

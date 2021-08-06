@@ -1,13 +1,13 @@
 import { createContext, useContext, useState } from 'react';
 
-const AuthContext = createContext(null);
+const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState({});
   // TODO deslogar
 
   return (
-    <AuthContext.Provider value={(user, setUser)}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {children}
     </AuthContext.Provider>
   );

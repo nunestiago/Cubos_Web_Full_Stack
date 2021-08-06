@@ -1,18 +1,16 @@
 import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 
 import { CustomAlert } from '../../components';
 import Loading from '../../components/Loading/Loading';
 import PasswordField from '../../components/PasswordInput/PasswordInput';
-import { UseAuth } from '../../context/provider';
 import { emailRegex } from '../../utils/emailRegex';
 import useStyles from './styles';
 
 function Login() {
-  const auth = UseAuth();
   const history = useHistory();
   const [apiError, setApiError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -37,9 +35,9 @@ function Login() {
         headers: { 'Content-Type': 'application/json' },
       });
       const dataApi = await response.json();
+
+      console.log(dataApi.user);
       if (response.ok) {
-        auth.setUser(dataApi);
-        console.log(auth);
         history.push('/store');
         setLoading(false);
       }
