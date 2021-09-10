@@ -1,12 +1,14 @@
 import { Button, Divider, InputAdornment, TextField, Typography } from '@material-ui/core';
 import clsx from 'clsx';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { CustomAlert, Loading } from '../../components';
 import useStyles from './styles';
 
 function AddProducts() {
   const classes = useStyles();
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -16,12 +18,15 @@ function AddProducts() {
   } = useForm();
 
   function onSubmit(data) {
-    console.log(data);
-    console.log(errors);
+    setLoading(true);
+
+    try {
+    } catch (error) {}
   }
 
   return (
     <div className={classes.root}>
+      <Loading loading={loading} />
       <Typography variant='h3' className={classes.title}>
         Nome da loja
       </Typography>
@@ -52,6 +57,7 @@ function AddProducts() {
             }}
             {...register('price', {
               required: "'Preço' obrigatório ",
+              valueAsNumber: 'Preço com números',
             })}
           />
           <TextField
@@ -67,6 +73,7 @@ function AddProducts() {
             }}
             {...register('storeName', {
               required: "'Estoque' obrigatório ",
+              valueAsNumber: 'Estoque em números',
             })}
           />
         </div>
@@ -86,6 +93,7 @@ function AddProducts() {
         />
         <div className={classes.footer}>
           <Divider className={classes.divider} />
+          <CustomAlert errors={errors} />
           <Button color='primary'>CANCELAR</Button>
           <Button variant='contained' color='primary' type='submit'>
             Adicionar produto

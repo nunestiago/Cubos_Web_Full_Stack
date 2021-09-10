@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     height: 430,
     position: 'relative',
     borderRadius: 24,
+    marginRight: 24,
   },
   deleteFlyButton: {
     position: 'absolute',
@@ -19,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 11,
+    marginTop: 'auto',
+    // TODO put prices down - check card
   },
   cardTitle: {
     color: '#575757',

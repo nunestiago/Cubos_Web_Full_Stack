@@ -1,16 +1,14 @@
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import React from 'react';
 
 import theme from './config/theme';
-import { ProductsProvider } from './context/ProductContext';
-import Routes from './routes/Routes';
+import Routes from './Routes';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <ProductsProvider>
-        <CssBaseline />
-        <Routes />
-      </ProductsProvider>
+      <CssBaseline />
+      <Routes />
     </ThemeProvider>
   );
 }

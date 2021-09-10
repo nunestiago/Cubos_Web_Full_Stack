@@ -26,6 +26,12 @@ function ResponsiveDialog() {
     setOpen(false);
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+
+    handleClose();
+  };
+
   return (
     <div>
       <Avatar className={classes.deleteFlyButton} onClick={handleClickOpen}>
@@ -55,7 +61,7 @@ function ResponsiveDialog() {
             Manter o produto
           </Button>
           <Button
-            onClick={handleClose}
+            onClick={(e) => handleDelete(e)}
             color='secondary'
             variant='contained'
             autoFocus

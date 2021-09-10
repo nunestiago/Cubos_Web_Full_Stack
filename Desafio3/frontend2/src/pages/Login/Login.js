@@ -1,12 +1,13 @@
 import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 
 import { CustomAlert } from '../../components';
 import Loading from '../../components/Loading/Loading';
 import PasswordField from '../../components/PasswordInput/PasswordInput';
+import { UseAuth } from '../../context/AuthContext';
 import { emailRegex } from '../../utils/emailRegex';
 import useStyles from './styles';
 
@@ -15,16 +16,18 @@ function Login() {
   const [apiError, setApiError] = useState('');
   const [loading, setLoading] = useState(false);
   const classes = useStyles();
+
+  const { setUser } = UseAuth();
+
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm();
 
   async function handleLogin(data) {
-    setApiError('');
     setLoading(true);
+    setApiError('');
     try {
       const response = await fetch('http://localhost:3001/login', {
         method: 'POST',
@@ -36,7 +39,7 @@ function Login() {
       });
       const dataApi = await response.json();
 
-      console.log(dataApi.user);
+      setUser(dataApi);
       if (response.ok) {
         history.push('/store');
         setLoading(false);
@@ -57,7 +60,7 @@ function Login() {
         <Grid container spacing={2}>
           <Grid item xs>
             <Typography variant='h4' gutterBottom={true}>
-              Login {apiError}
+              Login
             </Typography>
             <form className={classes.form} onSubmit={handleSubmit(handleLogin)}>
               <TextField

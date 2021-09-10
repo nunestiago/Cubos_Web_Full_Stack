@@ -46,7 +46,6 @@ export default function IconTabs(props) {
           orientation='vertical'
           value={value}
           onChange={handleChange}
-          variant='scrollable'
           centered={true}
           className={classes.tabs}
           aria-label='icon tabs example'

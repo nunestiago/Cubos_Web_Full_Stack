@@ -8,19 +8,20 @@ import React from 'react';
 import { DeleteDialog } from '..';
 import useStyles from './styles';
 
-function CustomCard() {
+function CustomCard({ item }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} id={item?.id ?? 1}>
       <CardActionArea>
         <DeleteDialog />
         <CardMedia
           component='img'
-          alt='Contemplative Reptile'
+          alt={item?.name ?? 'Cadastre primeiro produto'}
           height='240'
-          image='http://loremflickr.com/240/230'
-          title='Contemplative Reptile'
+          width='230'
+          image={item?.image ?? 'http://loremflickr.com/240/230'}
+          title={item?.name ?? 'Cadastre primeiro produto'}
         />
         <CardContent>
           <Typography
@@ -29,11 +30,10 @@ function CustomCard() {
             component='h2'
             className={classes.cardTitle}
           >
-            Lizard
+            {item?.name ?? 'Registre algo'}
           </Typography>
           <Typography variant='caption' color='#222222' component='p'>
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {item?.description ?? 'Cadastre primeiro produto'}
           </Typography>
           <div className={classes.cardBottom}>
             <Typography
@@ -41,10 +41,10 @@ function CustomCard() {
               color='rgba(101, 101, 101, 0.855)'
               component='p'
             >
-              3 unidades
+              {item?.stock ?? 0} unidades
             </Typography>
             <Typography variant='body2' color='#222222' component='p'>
-              R$ 9999
+              R$ {(item?.price / 100).toFixed(2) ?? 99.99}
             </Typography>
           </div>
         </CardContent>

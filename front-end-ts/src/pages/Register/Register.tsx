@@ -1,60 +1,31 @@
 import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { CustomAlert } from '../../components';
-import Loading from '../../components/Loading/Loading';
-import PasswordField from '../../components/PasswordInput/PasswordInput';
+import { PasswordInput } from '../../components';
 import useStyles from './styles';
 
-export default function Register() {
-  const [loading, setLoading] = useState(false);
+interface RegisterData {
+  username: string;
+  storename: string;
+  email: string;
+  password: string;
+}
 
-  const [apiError, setApiError] = useState('');
-  const history = useHistory();
+function Register() {
   const classes = useStyles();
+
   const {
     register,
     handleSubmit,
     getValues,
-        formState: { errors },
+    formState: { errors },
   } = useForm();
 
-
-
-  async function handleRegistration(data) {
-    setLoading(true);
-
-    try {
-      const response = await fetch('http://localhost:3001/register', {
-        method: 'POST',
-        body: JSON.stringify({
-          username: data.username,
-          storename: data.storename,
-          email: data.email,
-          password: data.password,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      const dataAPI = await response.json();
-      if (!response.ok) {
-        let err = new Error(dataAPI);
-        err.Status = 400;
-        throw err;
-      }
-      setLoading(false);
-      history.push('/login');
-    } catch (error) {
-      setApiError(error.message);
-      setLoading(false);
-    }
-  }
-
+  async function handleRegistration(data: RegisterData) {}
+  console.log(errors);
   return (
     <div className={classes.root}>
-      <Loading loading={loading} />
       <Paper className={classes.paper} elevation={10}>
         <Grid container spacing={2}>
           <Grid item xs>
@@ -74,6 +45,7 @@ export default function Register() {
                   required: "Campo 'Usuário' obrigatório ",
                 })}
                 error={!!errors.username}
+                helperText={errors?.username?.message}
               />
               <TextField
                 id='storename'
@@ -81,6 +53,7 @@ export default function Register() {
                 type='text'
                 fullWidth
                 error={!!errors.storename}
+                helperText={errors?.storename?.message}
                 {...register('storename', {
                   required: "Campo 'Nome da Loja' obrigatório ",
                 })}
@@ -91,22 +64,25 @@ export default function Register() {
                 type='email'
                 fullWidth
                 error={!!errors.email}
+                helperText={errors?.email?.message}
                 {...register('email', {
                   required: "Campo 'E-mail' obrigatório ",
                 })}
               />
-              <PasswordField
+              <PasswordInput
                 label='Senha'
                 register={() =>
                   register('password', {
                     required: "Campo 'Senha' obrigatório ",
                   })
                 }
+                helperText={errors?.password?.message}
                 error={!!errors.password}
               />
-              <PasswordField
+              <PasswordInput
                 label='Repita a senha'
                 error={!!errors.passwordConfirmation}
+                helperText={errors?.passwordConfirmation?.message}
                 register={() =>
                   register('passwordConfirmation', {
                     required: 'Confirme a senha!',
@@ -119,14 +95,6 @@ export default function Register() {
                   })
                 }
               />
-
-              <CustomAlert errors={errors} />
-
-              {apiError && (
-                <Alert severity='error' className={classes.alert}>
-                  {apiError}
-                </Alert>
-              )}
 
               <Button type='submit' color='primary' variant='contained'>
                 CRIAR CONTA
@@ -141,3 +109,5 @@ export default function Register() {
     </div>
   );
 }
+
+export default Register;
