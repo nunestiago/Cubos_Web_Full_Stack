@@ -12,9 +12,11 @@ rotas.post("/login", login.login);
 
 rotas.use(verificaLogin);
 
-rotas.get("/perfil", usuarios.obterPeril);
-rotas.put("/perfil", usuarios.atualizarPeril);
+rotas.get("/perfil", usuarios.obterPerfil);
+rotas.put("/perfil", usuarios.atualizarPerfil);
 
-rotas.post('/postagens'. postagens.novaPostagem)
+rotas.post("/postagens", postagens.novaPostagem);
+rotas.post("/postagens/:postagemId/curtir", postagens.curtir);
+rotas.post("/postagens/:postagemId/comentar", postagens.comentar);
 
 module.exports = rotas;
