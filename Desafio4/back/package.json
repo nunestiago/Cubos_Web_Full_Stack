@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migrate": "npx knex migrate:latest --knexfile config/knexConnect.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "export TZ=America/Sao_Paulo && nodemon ./src/app.js",
+    "start": "export TZ=America/Sao_Paulo && node ./src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -13,8 +19,15 @@
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.95.11"
+    "knex": "^0.95.11",
+    "nodemailer": "^6.6.5",
+    "pg": "^8.7.1",
+    "swagger-ui-express": "^4.1.6",
+    "yup": "^0.32.9",
+    "yup-locales": "^1.2.0",
+    "yup-phone": "^1.2.19"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
