@@ -1,0 +1,573 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "KarT",
+    "contact": {}
+  },
+  "host": "localhost:3333",
+  "basePath": "/",
+  "securityDefinitions": {},
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/user/register": {
+      "post": {
+        "summary": "User Register",
+        "tags": ["User"],
+        "operationId": "UserRegister",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserRegisterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "summary": "User Login",
+        "tags": ["User"],
+        "operationId": "UserLogin",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserLoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/user/edit": {
+      "put": {
+        "summary": "User Edit",
+        "tags": ["User"],
+        "operationId": "UserEdit",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/client/register": {
+      "post": {
+        "summary": "Client register",
+        "tags": ["Client"],
+        "operationId": "Clientregister",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ClientregisterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/client/getAll": {
+      "get": {
+        "summary": "Client Get All",
+        "tags": ["Client"],
+        "operationId": "ClientGetAll",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/client/delete/1": {
+      "delete": {
+        "summary": "Client register",
+        "tags": ["Client"],
+        "operationId": "ClientregisterCopy",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/charges/getAll": {
+      "get": {
+        "summary": "Charges get all",
+        "tags": ["Charges"],
+        "operationId": "Chargesgetall",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "post": {
+        "summary": "Charges new charge",
+        "tags": ["Charges"],
+        "operationId": "Chargesnewcharge",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ChargesnewchargeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/charges/getCharge": {
+      "get": {
+        "summary": "Charges get client",
+        "tags": ["Charges"],
+        "operationId": "Chargesgetclient",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/charges/clientCharges": {
+      "get": {
+        "summary": "Clients Charges",
+        "tags": ["Charges"],
+        "operationId": "ClientsCharges",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/charges/homeInfo": {
+      "get": {
+        "summary": "Client Home Info",
+        "tags": ["Charges"],
+        "operationId": "ClientHomeInfo",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/charges/editCharge": {
+      "put": {
+        "summary": "Charges Edit",
+        "tags": ["Charges"],
+        "operationId": "ChargesEdit",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ChargesEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/charges/delete": {
+      "delete": {
+        "summary": "Charges Edit",
+        "tags": ["Charges"],
+        "operationId": "ChargesEditCopy",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ChargesEditCopyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UserRegisterRequest": {
+      "title": "UserRegisterRequest",
+      "example": {
+        "nome": "Tiago",
+        "email": "nad4a@nada.com",
+        "senha": "123456"
+      },
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "senha": {
+          "type": "string"
+        }
+      },
+      "required": ["nome", "email", "senha"]
+    },
+    "UserLoginRequest": {
+      "title": "UserLoginRequest",
+      "example": {
+        "email": "teste@teste.com",
+        "senha": "teste"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "senha": {
+          "type": "string"
+        }
+      },
+      "required": ["email", "senha"]
+    },
+    "UserEditRequest": {
+      "title": "UserEditRequest",
+      "example": {
+        "nome": "Tiago1",
+        "email": "nad333a@nada.com",
+        "senha": "123456"
+      },
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "senha": {
+          "type": "string"
+        }
+      },
+      "required": ["nome", "email", "senha"]
+    },
+    "ClientregisterRequest": {
+      "title": "ClientregisterRequest",
+      "example": {
+        "nome": "Tiago1",
+        "email": "nad33a@nada.com",
+        "cpf": "02404019562",
+        "telefone": "71999114791"
+      },
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "string"
+        },
+        "telefone": {
+          "type": "string"
+        }
+      },
+      "required": ["nome", "email", "cpf", "telefone"]
+    },
+    "ChargesnewchargeRequest": {
+      "title": "ChargesnewchargeRequest",
+      "example": {
+        "nome": "Tiago1",
+        "email": "nad33a@nada.com",
+        "cpf": "02404019562",
+        "telefone": "71999114791"
+      },
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "string"
+        },
+        "telefone": {
+          "type": "string"
+        }
+      },
+      "required": ["nome", "email", "cpf", "telefone"]
+    },
+    "ChargesEditRequest": {
+      "title": "ChargesEditRequest",
+      "example": {
+        "id": 41,
+        "cliente_id": 32,
+        "nome": "Salim",
+        "descricao": "werwer",
+        "valor": 3,
+        "status": true,
+        "vencimento": "2021-10-06T03:00:00.000Z"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cliente_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "descricao": {
+          "type": "string"
+        },
+        "valor": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "vencimento": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "cliente_id",
+        "nome",
+        "descricao",
+        "valor",
+        "status",
+        "vencimento"
+      ]
+    },
+    "ChargesEditCopyRequest": {
+      "title": "ChargesEditCopyRequest",
+      "example": {
+        "id": 41
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["id"]
+    }
+  },
+  "tags": [
+    {
+      "name": "User"
+    },
+    {
+      "name": "Client"
+    },
+    {
+      "name": "Charges"
+    }
+  ]
+}
